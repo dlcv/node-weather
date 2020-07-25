@@ -20,13 +20,13 @@ const argv = require('yargs').options({
 const getInfo = async(address) => {
     try {
         const city = await place.getPlaceLatLong(address);
-        console.log(`== Datos de ${city.name} ==`).green;
+        console.log(`== Datos de ${city.name} ==`.green);
         console.log(`Latitud: ${city.latitude}`);
         console.log(`Longitud: ${city.longitude}`);
         const temp = await weather.getWeather(city.latitude, city.longitude);
         return `El clima de ${city.name} es de ${temp}`;
     } catch (error) {
-        console.log(`No se pudo obtener el clima de ${address}`);
+        console.log(`No se pudo obtener el clima de ${address}: ${error}`);
     }
 }
 
